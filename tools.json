@@ -21,13 +21,13 @@
   },
   {
     "name": "adv_firm_profile",
-    "description": "Get the SEC Form ADV / IAPD profile for an investment-adviser firm by its CRD number (the firm_source_id / CRD returned by adv_search_firm). Returns basic firm info, registration status, SEC number, notice-filing jurisdictions, disclosure flag, Form ADV Part 2 brochure list, and direct links to the full Form ADV report PDF. Note: reported AUM, client counts, and detailed disciplinary/disclosure narratives live inside the Form ADV filing itself — use the returned brochure/report PDF links for those.",
+    "description": "Get the SEC Form ADV / IAPD profile for an investment-adviser firm by its CRD number (the firm_source_id / CRD returned by adv_search_firm). Returns basic firm info, registration status, SEC number, notice-filing jurisdictions, disclosure flag, Form ADV Part 2 brochure list, and direct links to the full Form ADV report PDF. Also returns `regulatory_aum`: Form ADV Part 1A Item 5.F regulatory assets under management (discretionary, non-discretionary, total, in USD), account counts and non-US-client AUM, from the SEC Division of Investment Management monthly adviser release, with its data_as_of. Present for SEC-registered advisers only (state-registered and exempt reporting advisers file no 5.F in that release; the field says so). Disciplinary narratives still live in the linked Form ADV PDF.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "crd": {
           "type": "string",
-          "description": "Firm CRD number (a.k.a. firm_source_id), e.g. \"107342\" for Fisher Investments."
+          "description": "Firm CRD number (a.k.a. firm_source_id), digits only. Never guess a CRD from a firm name: call adv_search_firm with the name first and use the CRD it returns."
         }
       },
       "required": [

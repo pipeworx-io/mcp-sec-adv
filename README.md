@@ -1,16 +1,20 @@
-# mcp-sec-adv
+# sec-adv
 
-SEC ADV / IAPD MCP — SEC Investment Adviser Public Disclosure (Form ADV) lookup
+SEC Investment Adviser Public Disclosure (Form ADV) lookup: firm search, firm profile by CRD, individual search.
 
-Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1856+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
+Part of [Pipeworx](https://pipeworx.io) — an MCP gateway connecting AI agents to 1866+ live data sources. This is an independent, unofficial integration — not affiliated with, endorsed by, or published by the upstream provider.
 
-## Tools
+`adv_firm_profile` also returns `regulatory_aum`, the firm's Form ADV Part 1A Item 5.F figures: discretionary,
+non-discretionary and total regulatory assets under management (USD), account counts, and AUM attributable to
+non-US-person clients, each with the filing date and the dataset's `data_as_of`.
 
-| Tool | Description |
-|------|-------------|
-| `adv_search_firm` | Search SEC-registered investment adviser (RIA) and broker-dealer firms by name via the IAPD / Form ADV public directory. Returns matching firms with CRD number, SEC number, registration scope, disclosure flag, branch count, and office address. Use adv_firm_profile with a returned CRD for full detail. |
-| `adv_firm_profile` | Get the SEC Form ADV / IAPD profile for an investment-adviser firm by its CRD number (the firm_source_id / CRD returned by adv_search_firm). Returns basic firm info, registration status, SEC number, notice-filing jurisdictions, disclosure flag, Form ADV Part 2 brochure list, and direct links to the full Form ADV report PDF. Note: reported AUM, client counts, and detailed disciplinary/disclosure narratives live inside the Form ADV filing itself — use the returned brochure/report PDF links for those. |
-| `adv_search_individual` | Search individual investment-adviser representatives / brokers by name via the IAPD public directory. Returns matching individuals with their CRD number, name, registration scope, disclosure flag, and current employing firm(s) with city/state. |
+## Sources
+
+- U.S. Securities and Exchange Commission, Investment Adviser Public Disclosure directory (live, per request).
+- U.S. Securities and Exchange Commission, Division of Investment Management, Information About Registered
+  Investment Advisers (monthly release; US federal data, public domain). Refreshed
+  monthly by `scripts/bake-sec-adv-aum.mjs`; covers SEC-registered advisers only (state-registered and exempt
+  reporting advisers have no row, and `regulatory_aum.available` is `false` with the reason).
 
 ## Quick Start
 
@@ -56,7 +60,7 @@ directly, instead of just this one's:
 }
 ```
 
-Both URLs reach the same gateway and the same 1856+ data sources. The
+Both URLs reach the same gateway and the same 1866+ data sources. The
 only difference is which pack's tools are listed **directly**; `ask_pipeworx`
 reaches all of them from either one.
 

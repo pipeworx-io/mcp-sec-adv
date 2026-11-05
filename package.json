@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-sec-adv",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "SEC ADV / IAPD MCP — SEC Investment Adviser Public Disclosure (Form ADV) lookup",
   "type": "module",
   "main": "lib/index.js",
@@ -27,7 +27,7 @@
     "mode": "gateway",
     "slug": "sec-adv",
     "gatewaySlug": "sec-adv",
-    "sourceHash": "v1-98d061f49dca3be363248ea8719f3bc4e28693a746a4faa60b3a26b5ec55eac0",
-    "sourceCommit": "6bae4cfa7b6a73bbe014dc8820a19c80c842b21e"
+    "sourceHash": "v1-7a1070e937c3a607727229f615051d6edcc060d3abbd7b8a385ece2aa1b5a174",
+    "sourceCommit": "8fc802aa5e23be625ce08d97178f5676c7bc93f3"
   }
 }
